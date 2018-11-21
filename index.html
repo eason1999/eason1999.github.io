@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="每天进步一点点(node.js, javasctipt, vue, vuex, react, redux, mobx, less, sass...)">
     <meta name="keyword" content="">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
           
@@ -22,11 +23,19 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -55,7 +64,40 @@
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('') 
+            /*config*/
+        
+    }
+    
+</style>
 
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>打不死的狒狒</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">不积跬步无以成千里，不积小流无以成江海</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -83,6 +125,15 @@
                         <a href="/">Home</a>
                     </li>
 
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
                     
 
                         
@@ -126,24 +177,7 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>打不死的狒狒</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">不积跬步无以成千里，不积小流无以成江海</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-
-
-<!-- Main Content -->
+    <!-- Main Content -->
 <div class="container">
     <div class="row">
         
@@ -179,10 +213,12 @@ support lazy operation （惰性操作）
 常用api1234567891011121314151617181920212223242526272829303132333435363738394041//Map......
         </div>
     </a>
-    <p class="post-meta">
-        Posted by eason.L on
-        2018-11-21
-    </p>
+    
+        <p class="post-meta">
+            Posted by eason.L on
+            2018-11-21
+        </p>
+    
 
 </div>
 <hr>
@@ -203,10 +239,12 @@ happy every day!!!
 ...
         </div>
     </a>
-    <p class="post-meta">
-        Posted by eason.L on
-        2018-11-20
-    </p>
+    
+        <p class="post-meta">
+            Posted by eason.L on
+            2018-11-20
+        </p>
+    
 
 </div>
 <hr>
@@ -222,76 +260,117 @@ happy every day!!!
 
 
 
+                <br>
+
+                <!-- require APlayer -->
+                
+
                 <!-- 如果开启评论功能 -->
                 
-
             </div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                    </div>
-                </section>
-                
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
 
-                        
-                            <img src="//img/avatar/ironman.jpg">
-                        
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+    </div>
+</section>
 
-                        
-                            <p>Stay hungry,Stay foolish</p>
-                        
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
 
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
+        
+            <img id="avatar_pic" src="/img/avatar/ironman.jpg">
+        
 
-                            
+        
+            <p>Stay hungry,Stay foolish</p>
+        
 
-                            
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
 
-                            
-                            
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
-                
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
+            
 
-                    
-                        <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN 东方</a></li>
-                    
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">掘金 东方</a></li>
-                    
-                        <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">博客园 东方</a></li>
-                    
-                </ul>
-                
-            </div>
+            
+
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2018/11/21/immutableJS/">immutable.js 在redux项目中实践</a>
+        </li>
+      
+        <li>
+          <a href="/2018/11/20/hello-world/">Hello World</a>
+        </li>
+      
+    </ul>
+  </div>
+</h5>
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="http://blog.csdn.net/123" target="_blank">CSDN 东方</a></li>
+    
+        <li><a href="http://dockone.io/people/123" target="_blank">掘金 东方</a></li>
+    
+        <li><a href="https://yq.aliyun.com/u/123" target="_blank">博客园 东方</a></li>
+    
+</ul>
+
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+</div>
+
         
     </div>
 </div>
@@ -318,14 +397,14 @@ happy every day!!!
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; 打不死的狒狒 2018 
+                    Copyright &copy; eason.L 2018 
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
                     <span style="display: inline-block; margin: 0 5px;">
                         <i class="fa fa-heart"></i>
                     </span> 
-                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
-                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
+                    re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -405,12 +484,13 @@ happy every day!!!
 <!-- Baidu Tongji -->
 
 
-<!-- Side Catalog -->
 
 
 
 
-
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
 <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
