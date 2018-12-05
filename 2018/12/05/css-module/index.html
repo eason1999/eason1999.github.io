@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="每天进步一点点(node.js, javasctipt, vue, vuex, react, redux, mobx, less, sass...)">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          react中的css样式作用域 - undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2018/12/05/css-module/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>react中的css样式作用域</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by eason.L on
+                            2018-12-05
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">打不死的狒狒</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>感觉<code>react</code>的局部样式相比<code>vue</code>要麻烦点，<code>vue</code>可以在<code>style</code>标签上添加<code>scoped</code>，达到使样式作用于当前文件的效果，而<code>react</code>没有，但是<code>react</code>有其他的实现方式，比如我所知道且使用过的<code>css-Modules</code>、<code>styled-components</code>。</p>
+<h3 id="css-Modules"><a href="#css-Modules" class="headerlink" title="css-Modules"></a>css-Modules</h3><p>自动为每一个类生成一个哈希值，产生惟一标志，因此避免了类的覆盖，如下图：</p>
+<p><img src="/img/img/demo1.png" alt="css-modules"></p>
+<p>这里需要配置<code>wepack</code>文件，<code>react</code>项目需要执行<code>npm eject</code>命令暴露出<code>config</code>文件，我这里增加配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">  exclude: [<span class="regexp">/node_modules/</span>, /<span class="keyword">static</span>/],</span><br><span class="line">  use: getStyleLoaders(&#123;</span><br><span class="line">    importLoaders: <span class="number">1</span>,</span><br><span class="line">    modules: <span class="literal">true</span>,</span><br><span class="line">    localIdentName: <span class="string">'[name]_[local]_[hash:base64:5]'</span></span><br><span class="line">  &#125;),</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p><em>其中的/static/是一些css全局的文件</em></p>
+<p>关键配置就是 <strong>modules: true</strong></p>
+<h3 id="styled-components"><a href="#styled-components" class="headerlink" title="styled-components"></a>styled-components</h3><p><code>styled-components</code>是常用的<code>css in js</code>类库，他有很多的语法，<a href="https://www.styled-components.com/docs" target="_blank" rel="noopener">传送门</a>，它会在每个标签上生成唯一的类名，如下：</p>
+<p><img src="/img/img/demo2.png" alt="styled-components"></p>
+<p>这里需要在项目中引入<code>styled-components</code>，安装完成之后可以在需要的目录下创建如<code>style.js</code>文件，并在其中引入<code>styled-components</code>，使用如下：</p>
+<p><em>style.js</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">import</span> styled  <span class="keyword">from</span> <span class="string">'styled-components'</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">export</span> <span class="keyword">const</span> ModeDiv = styled.a.attrs(&#123;</span><br><span class="line">  <span class="comment">// 这里写入标签属性及赋值</span></span><br><span class="line">  href: <span class="string">'javascript:;'</span></span><br><span class="line"> &#125;)<span class="string">`</span></span><br><span class="line"><span class="string">  float: right;</span></span><br><span class="line"><span class="string">  line-height: 56px;</span></span><br><span class="line"><span class="string">  height: 56px;</span></span><br><span class="line"><span class="string">  padding: 0 10px 0 15px;</span></span><br><span class="line"><span class="string">  color: #969696;</span></span><br><span class="line"><span class="string">  text-decoration: none;</span></span><br><span class="line"><span class="string">  .icon-Aa &#123;</span></span><br><span class="line"><span class="string">    font-size: 24px;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NavItem = styled.div<span class="string">`</span></span><br><span class="line"><span class="string">  float: left;</span></span><br><span class="line"><span class="string">  line-height: 56px;</span></span><br><span class="line"><span class="string">  font-size: 16px;</span></span><br><span class="line"><span class="string">  color: #777;</span></span><br><span class="line"><span class="string">  margin-right: 40px;</span></span><br><span class="line"><span class="string">  .icon &#123;</span></span><br><span class="line"><span class="string">    font-size: 20px;</span></span><br><span class="line"><span class="string">    vertical-align: top;</span></span><br><span class="line"><span class="string">    margin-right: 2px;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  &amp;.first &#123;</span></span><br><span class="line"><span class="string">    color: #EA6F5A;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  &amp;.third &#123;</span></span><br><span class="line"><span class="string">    position: relative;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .icon-fangdajing &#123;</span></span><br><span class="line"><span class="string">    position: absolute;</span></span><br><span class="line"><span class="string">    top: 2px;</span></span><br><span class="line"><span class="string">    right: 10px;</span></span><br><span class="line"><span class="string">    z-index: 10px;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .focused &#123;</span></span><br><span class="line"><span class="string">    display: inline-block;</span></span><br><span class="line"><span class="string">    background: #969696;</span></span><br><span class="line"><span class="string">    color: #fff;</span></span><br><span class="line"><span class="string">    width: 32px;</span></span><br><span class="line"><span class="string">    height: 32px;</span></span><br><span class="line"><span class="string">    border-radius: 50%;</span></span><br><span class="line"><span class="string">    text-align: center;</span></span><br><span class="line"><span class="string">    line-height: 32px;</span></span><br><span class="line"><span class="string">    top: 14px;</span></span><br><span class="line"><span class="string">    right: 5px;</span></span><br><span class="line"><span class="string">    cursor: pointer;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .slide-enter &#123;</span></span><br><span class="line"><span class="string">    transition: all .2s ease-out;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .slide-enter-active &#123;</span></span><br><span class="line"><span class="string">    width: 260px;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .slide-exit &#123;</span></span><br><span class="line"><span class="string">    transition: all .2s ease-out;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .slide-exit-active &#123;</span></span><br><span class="line"><span class="string">    width: 160px;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure></p>
+<p><em>index.jsx</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">import</span> &#123; ModeDiv, NavItem &#125; <span class="keyword">from</span> <span class="string">'./style'</span>;</span><br><span class="line"> <span class="keyword">import</span> &#123; CSSTransition &#125; <span class="keyword">from</span> <span class="string">'react-transition-group'</span>;</span><br><span class="line"></span><br><span class="line">&lt;ModeDiv&gt;</span><br><span class="line">  &lt;i className=<span class="string">'iconfont icon-Aa'</span>&gt;&lt;/i&gt;</span><br><span class="line">&lt;<span class="regexp">/ModeDiv&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">...</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;NavItem className="third"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;CSSTransition</span></span><br><span class="line"><span class="regexp">    in=&#123;focused&#125;</span></span><br><span class="line"><span class="regexp">    timeout=&#123;200&#125;</span></span><br><span class="line"><span class="regexp">    classNames="slide"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;Fragment&gt;</span></span><br><span class="line"><span class="regexp">      &lt;SearchInput</span></span><br><span class="line"><span class="regexp">        className=&#123;focused ? 'ipt-focused' : ''&#125;</span></span><br><span class="line"><span class="regexp">        onFocus=&#123;() =&gt; handleFocus(list)&#125;</span></span><br><span class="line"><span class="regexp">        onBlur=&#123;handleBlur&#125;&gt;&lt;/</span>SearchInput&gt;</span><br><span class="line">      &lt;i className=&#123;focused ? <span class="string">'iconfont icon-fangdajing focused'</span> : <span class="string">'iconfont icon-fangdajing'</span>&#125;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;<span class="regexp">/Fragment&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>CSSTransition&gt;</span><br><span class="line">  &#123;(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (focused || mouseIn) &#123;</span><br><span class="line">      <span class="keyword">return</span> searchWrap();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;)()&#125;</span><br><span class="line">&lt;<span class="regexp">/NavItem&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p><code>styled-components</code>的使用增加了可维护性，但是体验感觉并不好，需要书写的代码更多，项目里我暂时没有试用<code>less</code>、<code>sass</code>，准备引入了，配合使用<code>css-modules</code>体验还是可以的。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/11/28/typescript/" data-toggle="tooltip" data-placement="top" title="TypeScript入门（1）">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.csdn.net/123" target="_blank">CSDN 东方</a></li>
+                    
+                        <li><a href="http://dockone.io/people/123" target="_blank">掘金 东方</a></li>
+                    
+                        <li><a href="https://yq.aliyun.com/u/123" target="_blank">博客园 东方</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; eason.L 2018 
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://github.com/eason1999">eason.L</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=eason1999&repo=hexo-theme-huweihuang&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
