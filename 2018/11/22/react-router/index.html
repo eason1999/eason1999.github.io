@@ -268,7 +268,15 @@
 </ul>
 <ul>
 <li><p>之后在组件内可以如下使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.context) </span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   router:</span></span><br><span class="line"><span class="comment">//     history: ...</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">this</span>.context.router.history.push(...)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.context) </span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   router:</span></span><br><span class="line"><span class="comment">//     history: ...</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">this</span>.context.router.history.push(...)</span><br></pre></td></tr></table></figure>
+<h3 id="react路由重定向"><a href="#react路由重定向" class="headerlink" title="react路由重定向"></a>react路由重定向</h3></li>
+<li><p>标签实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;Redirect to=&#123;path&#125;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>编程式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 访问this.context对象下的history对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.context.router.history.replace(path)</span><br></pre></td></tr></table></figure></li>
 </ul>
 
                 
