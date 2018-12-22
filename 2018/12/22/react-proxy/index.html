@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          
+          react多个代理时的设置方法 - undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/page/2/">
+    <link rel="canonical" href="http://yoursite.com/2018/12/22/react-proxy/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('') 
-            /*config*/
+            background-image: url('')
+            /*post*/
         
     }
     
@@ -83,10 +83,16 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>打不死的狒狒</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">不积跬步无以成千里，不积小流无以成江海</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>react多个代理时的设置方法</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by eason.L on
+                            2018-12-22
+                        </span>
                     </div>
                 
 
@@ -184,224 +190,114 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-<div class="post-preview">
-
-    <a href="/2018/11/21/immutableJS/">
-        <h2 class="post-title">
-            immutable.js 在redux项目中实践
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            immutable.js主要有三大特性：
-Persistent data structure （持久化数据结构）
-structural sharing （结构共享）
-support lazy operation （惰性操作）
-
-常用api1234567891011121314151617181920212223242526272829303132333435363738394041//Map......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by eason.L on
-            2018-11-21
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/11/20/hello-world/">
-        <h2 class="post-title">
-            Hello World
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            第一次搞，之前都是用的其他笔记工具，以后就在这里记下自己平时的所得所想吧···
-还有很多不完善的，时间也比较仓促，以后慢慢弄吧···
-记个hexo的命令：
-
-hexo s 本地预览
-hexo clean &amp;&amp; hexo g &amp;&amp; hexo d 发布到github
-
-happy every day!!!
-...
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by eason.L on
-            2018-11-20
-        </p>
-    
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-        <li class="previous">
-            <a href="/">&larr; Newer Posts</a>
-        </li>
-    
-    
+                <p>项目中可能会需要根据环境变量不同切换访问不同域名下api的需要，这时候就需要设置代理，不然会出现跨域问题，我在项目开发中遇到的是根据查询资料说多个代理地址时也是在<code>package.json</code>文件内以对象的形式设置<code>proxy</code></p>
+<p><em>这样设置有问题，应该是我当前项目版本比较高</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"proxy"</span>: &#123;</span><br><span class="line">    <span class="string">"/api1"</span>: &#123;</span><br><span class="line">        <span class="string">"target"</span>: <span class="string">"http://localhost:8001"</span>,</span><br><span class="line">        <span class="string">"changeOrigin"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"/api2"</span>: &#123;</span><br><span class="line">        <span class="string">"target"</span>: <span class="string">"http://localhost:8002"</span>,</span><br><span class="line">        <span class="string">"changeOrigin"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>后面自行查看了<code>create-react-app</code>官方文档，得到了答案：</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ul>
+<li><p>安装<code>http-react-middleware</code>依赖包</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install http-proxy-middleware --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>src</code>目录下新建<code>setupProxy.js</code>，添加内容如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy = <span class="built_in">require</span>(<span class="string">'http-proxy-middleware'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">app</span>) </span>&#123;</span><br><span class="line">    app.use(<span class="string">'/api1'</span>, &#123; <span class="attr">target</span>: <span class="string">'http://localhost:8001'</span> &#125;);</span><br><span class="line">    app.use(<span class="string">'/api2'</span>, &#123; <span class="attr">target</span>: <span class="string">'http://localhost:8002'</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p><code>setupProxy.js</code>文件不需要在任何地方引入，<code>webpack</code>会自动打包编译这个文件，现在可以顺利的切换使用啦！官方原文点<a href="https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development" target="_blank" rel="noopener">这里</a>，找到 <strong>Back-End Integration</strong>目录，第一个就是啦~~~</p>
 
+                
 
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/12/22/add-react-env/" data-toggle="tooltip" data-placement="top" title="react项目环境变量添加">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
                 <br>
-
+                
                 <!-- require APlayer -->
                 
 
-                <!-- 如果开启评论功能 -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.csdn.net/123" target="_blank">CSDN 东方</a></li>
+                    
+                        <li><a href="http://dockone.io/people/123" target="_blank">掘金 东方</a></li>
+                    
+                        <li><a href="https://yq.aliyun.com/u/123" target="_blank">博客园 东方</a></li>
+                    
+                </ul>
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id="avatar_pic" src="/img/avatar/ironman.jpg">
-        
 
-        
-            <p>Stay hungry,Stay foolish</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
 
-            
 
-            
 
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2018/12/22/react-proxy/">react多个代理时的设置方法</a>
-        </li>
-      
-        <li>
-          <a href="/2018/12/22/add-react-env/">react项目环境变量添加</a>
-        </li>
-      
-        <li>
-          <a href="/2018/12/12/tab-component/">基于vue的tab切换组件</a>
-        </li>
-      
-        <li>
-          <a href="/2018/12/11/burying-point/">vue项目数据埋点</a>
-        </li>
-      
-        <li>
-          <a href="/2018/12/05/css-module/">react中的css样式作用域</a>
-        </li>
-      
-    </ul>
-  </div>
-</h5>
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="http://blog.csdn.net/123" target="_blank">CSDN 东方</a></li>
-    
-        <li><a href="http://dockone.io/people/123" target="_blank">掘金 东方</a></li>
-    
-        <li><a href="https://yq.aliyun.com/u/123" target="_blank">博客园 东方</a></li>
-    
-</ul>
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li></ul>
-    </div>
-
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
