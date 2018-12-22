@@ -204,6 +204,32 @@
 
 <div class="post-preview">
 
+    <a href="/2018/12/22/wechat-miniapp/">
+        <h2 class="post-title">
+            小程序登录授权
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            小程序授权登录整体流程如下：
+
+登录授权  页面进入需判断是否授权时，在页面onShow生命周期：
+  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758onShow() &#123;  login() &#123;    wx.......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by eason.L on
+            2018-12-22
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2018/12/22/wechat-OAuth/">
         <h2 class="post-title">
             微信公众号授权第三方平台
@@ -425,30 +451,6 @@ store 123456789101112131415import &#123; createStore, applyMiddleware &#125; fro
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2018/11/22/process/">
-        <h2 class="post-title">
-            NodeJS入门--process对象
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            exit事件  进程退出时触发
-  12345678910process.on('exit', function() &#123;  // 设置一个延迟执行  setTimeout(function() &#123;      console.log('主事件循环已停止，所以不会执行');  &#125;, 0);  console.log('退出前执行');&#125;);setTimeo......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by eason.L on
-            2018-11-22
-        </p>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -533,6 +535,10 @@ store 123456789101112131415import &#123; createStore, applyMiddleware &#125; fro
     <ul>
       
         <li>
+          <a href="/2018/12/22/wechat-miniapp/">小程序登录授权</a>
+        </li>
+      
+        <li>
           <a href="/2018/12/22/wechat-OAuth/">微信公众号授权第三方平台</a>
         </li>
       
@@ -546,10 +552,6 @@ store 123456789101112131415import &#123; createStore, applyMiddleware &#125; fro
       
         <li>
           <a href="/2018/12/12/tab-component/">基于vue的tab切换组件</a>
-        </li>
-      
-        <li>
-          <a href="/2018/12/11/burying-point/">vue项目数据埋点</a>
         </li>
       
     </ul>
